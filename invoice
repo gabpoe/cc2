@@ -1,4 +1,6 @@
 public class Invoice {
+//PASCUA GABRIEL P.
+//CITCS 1B GROUP B
     public static void main(String[] args) {
         // Store Information
         System.out.println("Phoenix's Forge Interactive\t\t\t\t08/09/24");
@@ -22,3 +24,5 @@ public class Invoice {
         System.out.println("\nThank you.\n");
     }
 }
+
+
