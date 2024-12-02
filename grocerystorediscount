@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+//PASCUA GABRIEL P.
+//CITCS 1B GROUP B
+public class GroceryStoreDiscountCalculator {
+    public static void main(String[] args) {
+//PASCUA GABRIEL P.
+//CITCS 1B GROUP B
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the total amount of your purchase: $");
+        double totalAmount = scanner.nextDouble();
+        double discount = 0.0;
+
+        // Determine discount based on total amount
+        if (totalAmount >= 100) {
+            discount = totalAmount * 0.2; // 20% discount
+        } else if (totalAmount >= 50) {
+            discount = totalAmount * 0.1; // 10% discount
+        } else {
+            discount = 0.0; // No discount
+        }
+
+        double finalAmount = totalAmount - discount;
+
+        System.out.printf("Original Amount: $%.2f%n", totalAmount);
+        System.out.printf("Discount: $%.2f%n", discount);
+        System.out.printf("Final Amount after Discount: $%.2f%n", finalAmount);
+
+        scanner.close();
+    }
+}
