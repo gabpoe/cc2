@@ -1,0 +1,33 @@
+public class UniversityCourseEnrollment {
+//PASCUA GABRIEL P.
+//CITCS 1B GROUP B
+    public static void main(String[] args) {
+        // Step 1: Create a one-dimensional array to store the names of 5 students
+        String[] students = {"Alice", "Bob", "Charlie", "David", "Eve"};
+        
+        // Step 2: Create a two-dimensional array to store the grades of each student in 3 subjects
+        double[][] grades = {
+            {85.0, 90.0, 88.0}, // Grades for Alice
+            {78.0, 82.0, 80.0}, // Grades for Bob
+            {92.0, 89.0, 94.0}, // Grades for Charlie
+            {70.0, 75.0, 72.0}, // Grades for David
+            {88.0, 90.0, 85.0}  // Grades for Eve
+        };
+        
+        // Step 3: Calculate and display each student's average grade
+        for (int i = 0; i < students.length; i++) {
+            double total = 0; // Sum of grades for the current student
+            
+            // Sum up all grades for each student
+            for (int j = 0; j < grades[i].length; j++) {
+                total += grades[i][j];
+            }
+            
+            // Calculate average
+            double average = total / grades[i].length;
+            
+            // Step 4: Display each student's name along with their average grade
+            System.out.printf("%s's average grade: %.2f%n", students[i], average);
+        }
+    }
+}
