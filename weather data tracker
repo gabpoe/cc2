@@ -1,0 +1,32 @@
+public class WeatherDataTracker {
+//Pascua Gabriel P.
+//CITCS 1B GROUP B
+    public static void main(String[] args) {
+        // Step 1: Store daily temperature readings for 3 cities over 7 days
+        double[][] temperatures = {
+            {30.5, 32.0, 31.5, 33.0, 34.0, 35.5, 36.0}, // City 1
+            {25.0, 26.5, 27.0, 26.0, 28.5, 29.0, 30.0}, // City 2
+            {20.0, 21.5, 22.0, 23.5, 24.0, 25.0, 26.5}  // City 3
+        };
+
+        // Step 2: Calculate and display the average temperature for each city
+        for (int i = 0; i < temperatures.length; i++) {
+            double total = 0;
+            double highestTemp = temperatures[i][0]; // Initialize highestTemp with the first day's temperature
+
+            for (int j = 0; j < temperatures[i].length; j++) {
+                total += temperatures[i][j];
+                
+                // Check if the current day's temperature is higher than the current highest
+                if (temperatures[i][j] > highestTemp) {
+                    highestTemp = temperatures[i][j];
+                }
+            }
+            
+            double average = total / temperatures[i].length;
+            
+            // Display the average and highest temperature for the city
+            System.out.printf("City %d - Average Temperature: %.2f, Highest Temperature: %.2f%n", (i + 1), average, highestTemp);
+        }
+    }
+}
