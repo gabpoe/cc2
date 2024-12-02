@@ -1,0 +1,46 @@
+CHALLEGE 1
+
+import java.util.Scanner;
+//Pascua Gabriel P.
+//CITCS 1B Group B
+public class RetailStoreInventory {
+
+    public static void main(String[] args) {
+        // Scanner for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Define array to store prices for 10 products
+        double[] prices = {10.5, 20.0, 15.0, 5.5, 25.0, 40.0, 12.5, 18.0, 22.0, 30.0}; // Example prices
+
+        // Array to store user-input stock levels
+        int[] stockLevels = new int[prices.length];
+
+        // Prompt user to enter stock levels for each product
+        System.out.println("Enter the stock levels for the following products:");
+        for (int i = 0; i < stockLevels.length; i++) {
+            System.out.printf("Product %d (Price: $%.2f): ", i + 1, prices[i]);
+            stockLevels[i] = scanner.nextInt();
+        }
+
+        // Variable to store the total value of all items in stock
+        double totalValue = 0;
+
+        // Display stock levels, calculate total value
+        System.out.println("\nStock Levels and Values:");
+        System.out.println("-----------------------------------");
+        System.out.printf("%-10s%-10s%-10s\n", "Product", "Stock", "Value");
+
+        for (int i = 0; i < stockLevels.length; i++) {
+            double productValue = stockLevels[i] * prices[i];
+            totalValue += productValue;
+            System.out.printf("%-10d%-10d$%-10.2f\n", i + 1, stockLevels[i], productValue);
+        }
+
+        // Display the total stock value
+        System.out.println("-----------------------------------");
+        System.out.printf("The total value of all items in stock is: $%.2f%n", totalValue);
+
+        // Close scanner
+        scanner.close();
+    }
+}
