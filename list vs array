@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class ArrayVsListChallenge {
+    public static void main(String[] args) {
+        // Array
+        int[] array = {5, 3, 8, 6, 1, 9, 2, 7, 4, 0};
+
+        // ArrayList
+        ArrayList<Integer> list = new ArrayList<>();
+        Collections.addAll(list, 5, 3, 8, 6, 1, 9, 2, 7, 4, 0);
+
+        // Print array and list
+        System.out.println("Array: " + Arrays.toString(array));
+        System.out.println("List: " + list);
+
+        // Remove an element from the list
+        list.remove(Integer.valueOf(3));
+        System.out.println("List after removal: " + list);
+
+        // Sort and print both
+        Arrays.sort(array);
+        Collections.sort(list);
+        System.out.println("Sorted Array: " + Arrays.toString(array));
+        System.out.println("Sorted List: " + list);
+    }
+}
