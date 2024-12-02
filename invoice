@@ -1,0 +1,24 @@
+public class Invoice {
+    public static void main(String[] args) {
+        // Store Information
+        System.out.println("Phoenix's Forge Interactive\t\t\t\t08/09/24");
+        System.out.println("SM City Baguio, Luneta Hill Dr, 231, Baguio");
+        System.out.println("\nBILLED TO: Pascua, Gabriel  P.");
+        System.out.println("0906-213-7521\n");
+
+        // Items List:
+        System.out.println("________________________________________________________________________");
+        System.out.printf("%-30s %-10s %-12s %-10s\n", "Item", "Quantity", "Unit Price", "Total");
+        System.out.println("________________________________________________________________________");
+        System.out.printf("%-30s %-10d %-12d %-10d\n", "AMD Ryzen 7 5800X", 1, 14890, 14890);
+        System.out.printf("%-30s %-10d %-12d %-10d\n", "RTX 4060", 1, 22000, 22000);
+        System.out.printf("%-30s %-10d %-12d %-10d\n", "MSI B550-A PRO", 1, 7150, 7150);
+        System.out.println("________________________________________________________________________");
+
+        // Total Amount:
+        System.out.printf("%-52s %-10s %d\n", "", "Total", 44040);
+
+        // Additional Notes:
+        System.out.println("\nThank you.\n");
+    }
+}
