@@ -1,0 +1,31 @@
+import java.util.Scanner;
+//PASCUA GABRIEL P.
+//CITCS 1B GROUP B
+public class GardenCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 1. Input: Given Values
+        System.out.print("Enter the length of the garden in meters: ");
+        double length = scanner.nextDouble();
+
+        System.out.print("Enter the width of the garden in meters: ");
+        double width = scanner.nextDouble();
+
+        // 2. Calculations
+        // Calculate area
+        double area = length * width;
+
+        // Calculate perimeter
+        double perimeter = 2 * (length + width);
+
+        // 3. Output
+        System.out.println("\nThe length of the garden is: " + length + " meters");
+        System.out.println("The width of the garden is: " + width + " meters");
+        System.out.println("The area of the garden is: " + area + " square meters");
+        System.out.println("The perimeter of the garden is: " + perimeter + " meters");
+
+        scanner.close();
+    }
+}
+
