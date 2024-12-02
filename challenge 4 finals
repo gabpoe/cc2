@@ -1,0 +1,83 @@
+class PageNode {
+    String url;
+    PageNode prev;
+    PageNode next;
+
+    public PageNode(String url) {
+        this.url = url;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class BrowserHistory {
+    PageNode current;
+
+    public BrowserHistory() {
+        this.current = null;
+    }
+
+    // Visit a new page and clear forward history
+    public void visitNewPage(String url) {
+        PageNode newPage = new PageNode(url);
+        if (current != null) {
+            current.next = null;  // Clear forward history
+            newPage.prev = current;
+            current.next = newPage;
+        }
+        current = newPage;
+        System.out.println("Visited: " + url);
+    }
+
+    // Go back to the previous page
+    public void goBack() {
+        if (current != null && current.prev != null) {
+            current = current.prev;
+            System.out.println("Back to: " + current.url);
+        } else {
+            System.out.println("No previous page.");
+        }
+    }
+
+    // Go forward to the next page
+    public void goForward() {
+        if (current != null && current.next != null) {
+            current = current.next;
+            System.out.println("Forward to: " + current.url);
+        } else {
+            System.out.println("No forward page.");
+        }
+    }
+
+    // Display the current page
+    public void displayCurrentPage() {
+        if (current != null) {
+            System.out.println("Current page: " + current.url);
+        } else {
+            System.out.println("No pages in history.");
+        }
+    }
+}
+
+public class BrowserHistoryApp {
+    public static void main(String[] args) {
+        BrowserHistory history = new BrowserHistory();
+
+        // Visiting new pages
+        history.visitNewPage("google.com");
+        history.visitNewPage("youtube.com");
+        history.visitNewPage("wikipedia.org");
+
+        // Going back and forward through history
+        history.goBack();  // Should go back to youtube.com
+        history.goBack();  // Should go back to google.com
+        history.goForward();  // Should go forward to youtube.com
+
+        // Visiting a new page clears forward history
+        history.visitNewPage("github.com");  // Should clear forward history
+        history.goForward();  // No forward page (should output that there's no forward page)
+
+        // Display the current page
+        history.displayCurrentPage();  // Should show github.com
+    }
+}
