@@ -1,0 +1,161 @@
+// Class representing a song node in the playlist
+class SongNode {
+    String songName;
+    SongNode next;
+    SongNode prev;
+
+    // Constructor
+    public SongNode(String songName) {
+        this.songName = songName;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+// Class representing the circular doubly linked list (playlist)
+class CircularDoublyLinkedList {
+    private SongNode head;
+    private SongNode tail;
+    private SongNode current;
+
+    // Constructor to initialize the playlist
+    public CircularDoublyLinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.current = null;
+    }
+
+    // Add a song to the playlist
+    public void addSong(String songName) {
+        SongNode newSong = new SongNode(songName);
+
+        if (head == null) {  // Empty playlist, initialize with the first song
+            head = newSong;
+            tail = newSong;
+            head.next = head;  // Points to itself
+            head.prev = head;  // Points to itself
+            current = head;
+        } else {
+            tail.next = newSong;
+            newSong.prev = tail;
+            newSong.next = head;
+            head.prev = newSong;
+            tail = newSong;
+        }
+    }
+
+    // Remove a song from the playlist
+    public void removeSong(String songName) {
+        if (head == null) {
+            System.out.println("Playlist is empty.");
+            return;
+        }
+
+        SongNode currentNode = head;
+        do {
+            if (currentNode.songName.equals(songName)) {
+                if (currentNode == head && currentNode == tail) {
+                    head = null;
+                    tail = null;
+                    current = null;
+                } else if (currentNode == head) {
+                    head = currentNode.next;
+                    tail.next = head;
+                    head.prev = tail;
+                } else if (currentNode == tail) {
+                    tail = currentNode.prev;
+                    tail.next = head;
+                    head.prev = tail;
+                } else {
+                    currentNode.prev.next = currentNode.next;
+                    currentNode.next.prev = currentNode.prev;
+                }
+                System.out.println("Song '" + songName + "' removed from playlist.");
+                return;
+            }
+            currentNode = currentNode.next;
+        } while (currentNode != head);
+
+        System.out.println("Song '" + songName + "' not found in playlist.");
+    }
+
+    // Move to the next song in the playlist
+    public void moveNext() {
+        if (current != null) {
+            current = current.next;
+            System.out.println("Now playing: " + current.songName);
+        }
+    }
+
+    // Move to the previous song in the playlist
+    public void movePrevious() {
+        if (current != null) {
+            current = current.prev;
+            System.out.println("Now playing: " + current.songName);
+        }
+    }
+
+    // Display the current song
+    public void currentSong() {
+        if (current != null) {
+            System.out.println("Currently playing: " + current.songName);
+        } else {
+            System.out.println("No song is currently playing.");
+        }
+    }
+
+    // Display the entire playlist
+    public void displayPlaylist() {
+        if (head == null) {
+            System.out.println("Playlist is empty.");
+            return;
+        }
+
+        SongNode currentNode = head;
+        System.out.println("Playlist:");
+        do {
+            System.out.print(currentNode.songName + " -> ");
+            currentNode = currentNode.next;
+        } while (currentNode != head);
+        System.out.println("Back to start.");
+    }
+}
+
+// Main class to test the playlist
+public class MusicPlaylistApp {
+    public static void main(String[] args) {
+        CircularDoublyLinkedList playlist = new CircularDoublyLinkedList();
+
+        // Add songs to the playlist
+        playlist.addSong("Song A");
+        playlist.addSong("Song B");
+        playlist.addSong("Song C");
+        playlist.addSong("Song D");
+
+        // Display the playlist
+        playlist.displayPlaylist();
+
+        // Move to the next song
+        playlist.moveNext();
+        playlist.moveNext();
+
+        // Display the current song
+        playlist.currentSong();
+
+        // Move to the previous song
+        playlist.movePrevious();
+
+        // Remove a song
+        playlist.removeSong("Song C");
+
+        // Display the playlist after removal
+        playlist.displayPlaylist();
+
+        // Move next and previous after removal
+        playlist.moveNext();
+        playlist.movePrevious();
+
+        // Display current song
+        playlist.currentSong();
+    }
+}
